@@ -53,4 +53,13 @@ describe("Soft Play OOP", () => {
     expect(softPlay.leave(2,1)).toBeTrue()
     expect(softPlay.occupancy()).toEqual({adults: 0, children: 0})
   })
+
+  xit("Broken leave case: Enter: 1+2c, 1+1c. Leave 1+1c FAILS :(", function() {
+    let softPlay = new SoftPlay()
+    softPlay.enter(1,2)
+    softPlay.enter(1,1)
+    expect(softPlay.occupancy()).toEqual({adults: 2, children: 3})
+    expect(softPlay.leave(1,1)).toBeTrue()
+    expect(softPlay.occupancy()).toEqual({adults: 1, children: 2})
+  })
 })
